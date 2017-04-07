@@ -1,0 +1,49 @@
+@height: 75px;
+@commonColor: #04B894;
+@white: #FFF;
+.header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 1;
+	width: 100%;
+	height: @height;
+	line-height: @height;
+	background-color: @commonColor;
+	.center {
+		text-align: center;
+	}
+	.logo {
+		color: @white;
+		font-family: cursive;
+		font-size: 30px;
+	}
+}
+.changeAccount {
+	color: @white;
+	.title {
+		padding-left: 15px;
+		float: left;
+		color: @white;
+	}
+	.accountList {
+		float: right;
+		padding-right: 15px;
+	}
+	.logOut {
+		color: @white;
+	}
+	.currentAccount {
+		margin: 0 10px;
+		width: 250px;
+	}
+	:global{
+		.ant-breadcrumb-separator {
+			color: @white;
+		}
+		.ant-breadcrumb a {
+			color: @white;
+		}
+	}
+}

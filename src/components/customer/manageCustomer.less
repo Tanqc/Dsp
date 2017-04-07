@@ -1,0 +1,29 @@
+@space: 15px;
+@bgColor: #FFF;
+@commonColor: #04B894;
+.manageCustomer {
+	.search {
+		background-color: #FFF;
+		padding: 15px;
+		:global {
+			.ant-select-lg .ant-select-selection--single {
+				width: 142px !important;
+			}
+		}
+	}
+	.list {
+		background-color: #FFF;
+		padding: 15px;
+		margin-top: 15px;
+		.head {
+			padding-bottom: 15px;
+			.subTitle {
+				font-size: 14px;
+				color: @commonColor;
+			}
+			.add {
+				float: right;
+			}
+		}
+	}
+}

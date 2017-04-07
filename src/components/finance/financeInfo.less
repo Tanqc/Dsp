@@ -1,0 +1,48 @@
+@space15: 15px;
+@bgColor: #FFF;
+@commonColor: #04B894;
+.financeInfo {
+	.manageBalance {
+		padding: 45px 0;
+		background-color: @bgColor;
+		.pay, .info, .action {
+		}
+		.pay {
+			font-size: 72px;
+			color: #FF5A11;
+			text-align: center;
+		}
+		.info {
+			padding-top: 10px;
+			p {
+				line-height: 1.5;
+				span {
+					color: #FF5A11;
+					font-weight: 700;
+					font-size: 16px;
+				}
+			}
+		}
+		.action {
+			line-height: 72px;
+		}
+	}
+	.payPath {
+		margin-top: @space15;	
+		padding: @space15;
+		background-color: @bgColor;
+		.title {
+			padding-bottom: 25px;
+			font-size: 14px;
+			color: @commonColor;
+		}
+		.p25 {
+			padding-bottom: 25px;
+		}
+		:global {
+			.ant-steps {
+				width: 80%;
+			}
+		}
+	}
+}

@@ -1,0 +1,35 @@
+@space: 15px;
+@bgColor: #FFF;
+@commonColor: #04B894;
+.createPlan {
+	.hide {
+		display: none;
+	}
+	.step, .adPlan {
+		background-color: @bgColor;
+		padding: @space;
+	}
+	.step {
+
+	}
+	.adPlan {
+		.title {
+	    font-size: 14px;
+	    padding: 15px 0 15px 10%;
+	    color: #04b894;
+		}
+		.textarea {
+			height: 150px;
+		}
+		.regionCodes {
+			span {
+				margin-right: 5px;
+			}
+		}
+		.changeRegion {
+			color: @commonColor;
+			text-decoration: underline;
+			cursor: pointer;
+		}
+	}
+}

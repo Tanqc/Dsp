@@ -1,0 +1,18 @@
+@bgColor: #FFF;
+@space: 15px;
+.financeRecord {
+	.search {
+		background-color: @bgColor;
+		padding: @space;
+		:global {
+			.ant-select-lg .ant-select-selection--single {
+				width: 142px !important;
+			}
+		}
+	}
+	.list {
+		background-color: @bgColor;
+		padding: @space;
+		margin-top: @space;
+	}
+}

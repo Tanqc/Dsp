@@ -1,0 +1,32 @@
+:global {
+	.ant-modal-body {
+		padding: 0;
+	}
+	.ant-checkbox-wrapper:not(:last-child) {
+		margin: 0;
+	}
+	.ant-tree {
+		> li > ul > li > ul > li {
+			position: relative;
+			display: inline-block;
+			> ul {
+				position: absolute;
+				left: 0;
+				top: 0; 
+				width: 205px;
+				margin-top: 30px;
+				z-index: 2;
+				background-color: #FFF;
+				border: 1px solid #888;
+				> li:nth-child(odd) {
+					display: inline-block;
+					float: left;
+				}
+				> li:nth-child(even) {
+					display: inline-block;
+					float: right;
+				}
+			}
+		}
+	}
+}

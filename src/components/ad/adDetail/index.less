@@ -1,0 +1,38 @@
+@bgColor: #FFF;
+@space: 15px;
+.adDetail {
+	background-color: @bgColor;
+	padding: @space;
+	.mr10 {
+		margin-right: 10px;
+	}
+	.title {
+    font-size: 14px;
+    padding: 25px 0;
+    color: #04b894;
+	}
+	.title:first-child {
+		padding-top: 0;
+	}
+	.imgs {
+		width: 250px;
+		height: 125px;
+	}
+	.couponInfo {
+		p {
+			padding-bottom: @space;
+		}
+	}
+	:global {
+		.ant-row {
+			padding-bottom: 20px;
+		}
+		.ant-col-2 {
+			text-align: right;
+		}
+		.ant-col-20 {
+			padding-left: 20px;
+		}
+	}
+}
+	

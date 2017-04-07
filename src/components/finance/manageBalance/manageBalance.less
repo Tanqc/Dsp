@@ -1,0 +1,34 @@
+@bgColor: #FFF;
+@space: 15px;
+.manageBalance {
+	.fl {
+		float: right;
+	}
+	.search {
+		background-color: @bgColor;
+		padding: @space;
+	}
+	.list {
+		background-color: @bgColor;
+		padding: @space;
+		margin-top: @space;
+	}
+}
+.allocateBalance {
+	padding: @space;
+	background-color: @bgColor;
+	.mr15 {
+		margin-right: @space;
+	}
+	:global {
+		.ant-row {
+			margin-bottom: 24px;
+		}
+		.ant-col-8 {
+			padding-left: @space;
+		}
+		.ant-col-4 {
+			text-align: right;
+		}
+	}
+}

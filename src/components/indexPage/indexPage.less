@@ -1,0 +1,127 @@
+@commonColor: #04B894;
+@bgColor: #FFF;
+@fontColor: #FFF;
+@actionW: 40px;
+@actionH: 40px;
+@fontSize: 14px;
+@orangeColor: #FF5A11;
+.indexPage {
+	.consulting, .newAdvertiser, .newAd {
+		background-color: @bgColor;
+		position: relative;
+		.container {
+			height: 140px;
+			padding: 15px;
+			.p10 {
+				padding: 5px 0;
+			}
+		}
+		.actionBtn {
+			height: @actionH;
+			line-height: @actionW;
+			text-align: center;
+			background-color: @commonColor;
+			:global {
+				.anticon-plus {
+					font-weight: 700;
+					margin-right: 5px;
+				}
+			}
+			a {
+				color: @fontColor;
+				font-size: @fontSize;
+			}
+		}
+	}
+	.newAdvertiser, .newAd {
+		.title {
+			padding-bottom: 15px;
+			font-size: 14px;
+			color: @commonColor;
+		}
+		.container {
+			font-size: 12px;
+			color: #444;
+			a {
+				color: #444;
+				text-decoration: underline;
+			}
+			.notPass {
+				color: @orangeColor;
+			}
+		}
+	}
+	.consulting {
+		.container {
+			display: table;
+			.content {
+				display: table-cell;
+	    	vertical-align: middle;
+	    	text-align: center;
+	    	.title {
+					color: #888;
+					font-size: 14px;
+				}
+				.balance {
+					color: @orangeColor;
+					font-size: 24px;
+					padding-top: 15px;
+				}
+			}
+		}
+	}
+	.statistics {
+		margin-top: 15px;
+		padding: 15px;
+		background-color: @bgColor;
+		.total {
+			color: #000;
+			font-weight: 700;
+		}
+		.head {
+			padding-bottom: 15px;
+		}
+		:global {
+			.ant-radio-group {
+				float: right;
+			}
+		}
+		.subTitle {
+			font-size: 14px;
+			color: @commonColor;
+		}
+		.explain {
+			font-size: 12px;
+			color: #888;
+			margin-left: 10px;
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

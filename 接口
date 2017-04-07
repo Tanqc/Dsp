@@ -1,0 +1,508 @@
+首页：
+广告主统计：
+	/dsp/account/advert/statInfo
+	返回值
+		private Integer emailVerifyingCount;//邮箱验证中
+    private Integer advertAuditingCount;//审核中
+    private Integer advertNotPassCount;//未通过
+    private Integer advertPassCount;//使用中
+    private Integer advertTotalCount;//总广告主
+广告计划：
+		/dsp/ad/plan/agent/statInfo
+		返回值
+		private Integer refuseCount = 0;  //被拒绝数目
+    private Integer puttingCount = 0; //投放中数目
+    private Integer auditIngCount = 0; //审核中数目
+    private Integer advertCount = 0;   //总数目
+数据统计：
+	/dsp/statistics/agent/feePerDay?data={beginTime,endTime}
+		private Long totalExposureCount; //总曝光数目
+    private Long totalClickCount; //总点击数目guagn
+    private String totalClickRate; //总点击率
+    private String avgPrice; //点击均价
+    private String totalConsumeTotal; //总消耗
+	  private List<AdvertsStatPerDayVO> list; //按日统计列表
+			 	private String curDate; //时间
+		    private Long exposureCount ; //曝光数目
+		    private Long clickCount ; //点击数目
+		    private String clickRate; //点击率
+		    private String avgPrice; //点击均价
+		    private String consumeTotal ; //总消耗
+广告数据：
+	/dsp/statistics/ad/plan/data?data={planName,mail,companyName,beginTime,endTime,page,pageSize}
+	返回data：
+		private Long planId; 广告id
+    private String name;广告计划名称	
+    private Long avertId;广告主用户ID
+    private String companyName;客户公司名称
+    private String time; 时间
+    private Long exposureCount; 曝光量(次)
+    private Long clickCount; 点击(次)
+    private String clickRate; 点击率
+    private String avgPrice; 点击均价(元)
+    private String consumeTotal; 总消耗(元)
+客户数据：
+	/dsp/statistics/advertiser/data?data={mail,companyName,beginTime,endTime,page,pageSize}
+	返回data：
+	  private Long avertId; 广告主用户ID
+    private String companyName;
+    private Long exposureCount;
+    private Long clickCount;
+    private Long launchCount;/ /发劵次数
+    private String clickRate;
+    private String avgPrice;
+    private String consumeTotal;
+
+表格统计 暂无
+代理商注册：
+	/dsp/agent/register?data={} 注册
+	/user/mail/sendActivationCode.action?data={mail} 验证码
+	arg: mail,
+			code（验证码）,
+			password,
+			entName（企业名称）,
+			registerCode（营业执照号）,
+			licenseUrl（营业执照图片链接）,
+			address,
+			contactName,
+			contactMail,
+			contactTel
+登录：
+	/1.0/user/login.action?data={mail,password,loginType:3}
+退出：
+	/user/logout.action
+获取账号信息：
+	/dsp/account/info
+	返回data：
+	{
+		success: true,
+		data: {
+			eid 企业ID
+	    registerCode 营业执照号
+	    entName 企业名称
+	    entAddress 企业地址
+	    licenseUrl 营业执照图片链接
+			contactName 联系人姓名
+			contactMail 联系人邮箱
+			contactTel 联系人电话
+			contactQQ 联系人电话
+			permissions 权限列表
+			[
+				"a","c","b","d"
+				自身权限值 有 显示 一控制多
+			]
+	    bindList: { 展示列表
+	  		id;
+	      eid;
+	      name;
+		  } 	
+		}
+	}
+切换用户：
+	/dsp/switch/user?data={eid}
+重置密码（弹窗形式）：
+	/user/mail/changePassword.action?data={mail, code（来自邮箱验证码）, password}
+	发送验证码
+	/user/mail/sendActivationCode.action?data={mail}
+账号信息：
+	/dsp/agent/contact/update={contactName,contactMail,contactTel}
+权限管理：
+	/dsp/agent/collaborative/account/list?data={mail,name,roleCode,status,page,pageSize}
+	客户注册邮箱、客户公司名称字段暂时去掉
+	角色类型字段：
+		{
+			"agent_admin" 代理商-管理员
+			"agent_operator" 代理商-操作员
+			"agent_treasurer" 代理商-财务员
+		}
+	角色状态：
+		{
+			status： 0 暂停 1 使用中
+		}
+	返回值：
+	{
+		success: true,
+		code: "",
+		msg: "",
+		data: {
+			page,
+			pageSize,
+			list:[
+				{
+					private Long id;
+			    private String name;
+			    private String email;
+			    private Long roleCode;
+			    private String roleName;
+			    private Integer status; 0 关 1 开
+			    private Integer advertiserNum;
+				}
+			]
+		}
+	}
+协作账号状态字段接口：
+	userId = id
+	/dsp/agent/employee/enable?data={userId}  开
+	/dsp/agent/employee/disable?data={userId} 关
+协作账号删除接口：
+	/dsp/agent/employee/delete?data={userId}
+创建账号接口：
+	/dsp/agent/employee/add?data={name,pwd,mail,roleCode}
+	roleCode {
+		"agent_admin" 代理商-管理员
+		"agent_operator" 代理商-操作员
+		"agent_treasurer" 代理商-财务员
+	}
+广告列表接口：
+	查询列表：
+	客户公司名称字段暂时去掉
+	/dsp/ad/plan/list?data={name,email,auditStatus（审核状态）,status（广告状态/具体key暂无）,beginTime,endTime,page,pageSize}
+	status： {
+		0 1 -1
+	}
+	返回值：
+	{
+		success: true,
+		code: "",
+		msg: "",
+		data: {
+			totalCount,
+			totalPage
+			list:[
+				{
+					private Long id;
+			    private String name;
+			    private Long entId;
+			    private String entName;
+			    private Long exposureCount; //曝光量
+			    private Long clickCount; //点击量
+			    private Integer curInventory; //当前库存
+			    private Integer inventory; //总库存
+			    private Long consumeTotal; //消耗
+			    private String fee; //出价
+			    private String dayBudget; //日预算
+			    private String refuseReason; //拒绝理由
+    			private Integer validStatus; //状态
+				}
+			]
+		}
+	}
+	广告开关：
+		/dsp/ad/plan/open?data={id}
+		/dsp/ad/plan/close?data={id}
+	删除广告：
+		/dsp/ad/plan/delete?data={id}
+	广告详情：
+		/dsp/ad/plan/detail?data={id}
+		返回值：
+			private Long id;
+
+	    private Long advertId; //广告主用户ID
+	    private Long userId; //扣款账户
+	    private String name;
+
+	    private Integer chargeType; //计费类型：1.cps
+	    private Long fee; //出价
+	    private Long dayBudget; //日预算
+	    private Long couponId;//优惠券ID
+
+	    private Integer status; //状态:-1 删除 0.禁用 1.启用
+	    private Integer auditStatus;//审核状态：-1.未通过 0.未审核 1.通过
+
+	    private Date beginTime; //开始日期
+	    private Date endTime;   //结束日期
+
+	    private Date createTime;
+	    private Date updateTime;
+
+	    private String entName; //企业名称
+	    private Long entId; //企业名称
+
+	    private Long agentId; //代理商ID
+	    private CouponDO coupon;
+	    	{
+	    		private Long id;
+			    private String title; //名称
+			    private String remark; //一句话说明
+			    private String description; //描述
+
+			    private String thumbnailUrl;  //默认缩略图
+			    private String bannerUrl;  //详情页banner
+
+			    private Integer type; //1.推广链接 2.优惠码
+
+			    private Integer inventory; //总库存
+			    private Integer curInventory;//剩余数量
+			    private String buttonText = "马上使用";//按钮名称
+			    private String promoteUrl;  //推广链接
+			    private String codeContent;  //优惠码
+
+			    private Date startValid; //有效期开始
+			    private Date endValid;   //有效期结束
+
+			    private Long planId; //广告计划ID
+			    private Date createTime;
+			    private Date updateTime;
+	    	}
+	    private List<Integer> platform; //1.安卓 2.ios 3.h5
+	    private List<Long> industryIds; //行业列表
+	    private List<Integer> regionCodes; //地域列表
+	  修改出价接口：/dsp/ad/plan/fee/update?data={id,fee}
+	  修改日预算接口：/dsp/ad/plan/dayBudget/update?data={id,dayBudget}
+客户管理：
+	审核状态 邮箱验证状态 字段暂时去掉
+	dsp/advertiser/list?data={companyName,mail,opUserName（实时搜索功能）,status（冻结状态）,page,pageSize}
+	status： {
+		0 已冻结
+		1 未冻结
+	}
+	编辑接口：
+	/dsp/advertiser/detail?data={id}
+	更新接口：
+	/dsp/advertiser/update?data={id,contactName,contactMail,contactQQ,opUserId}
+	返回值：
+		{
+			success: true,
+			code: "",
+			msg: "",
+			data: {
+				totalCount,
+				totalPage
+				list:[
+					{
+						private Long id;
+				    private Long userId;
+				    private String companyName;
+				    private String contactName; //姓名
+				    private String contactMail; //邮箱
+				    private String contactTel; //电话
+				    private String contactQQ;  //QQ
+
+				    private Long operatorUserId;
+				    private String operatorName;
+
+				    private String funSum; //余额
+
+				    private Integer status;
+				    private String statusText;
+
+				    //企业相关信息
+				    private String entName;
+				    private String entRegisterCode;
+				    private String entAddress;
+				    private String entLicenseUrl;//营业执照
+					}
+				]
+			}
+		}
+	新建客户
+
+http://localhost:8080/dsp/advertiser/add?data={
+	mail:"lingdi@adbaitai.com",
+	password:"Liuhong163",
+	entName:"小弟集团",
+	registerCode:"12312",
+	licenseUrl:"123",
+	address:"123",
+	contactName:"小明",
+	contactQQ:"513828570",
+	opUserId:24
+}
+
+	/dsp/advertiser/add?data={}
+	
+	arg: {
+		String mail = getAsString(params, "mail");
+    String password = getAsString(params, "password");
+
+    String entName = getAsString(params, "entName");
+    String registerCode = getAsString(params, "registerCode");
+    String licenseUrl = getAsString(params, "licenseUrl");
+    String address = getAsString(params, "address");
+
+    String contactName = getAsString(params, "contactName");
+    // String contactMail = getAsString(params, "contactMail");
+    String contactQQ = getAsString(params, "contactQQ");
+    //操作员
+    Long opUserId = getAsLong(params, "opUserId");
+	}
+	上传接口暂无
+财务信息：
+	客户数量、消耗中客户字段暂无
+	/dsp/finance/self/get
+	返回值： {
+		accountId, consumeCurDay, balance
+	}
+财务记录：
+	/dsp/finance/advert/records?data={}
+	arg{
+		Integer roleType = getAsInteger(params, "payType"); //1.存入 2.支出
+    String entName = getAsString(params, "companyName"); // 公司名称
+    String email = getAsString(params, "email"); //邮箱
+    String beginTime = getAsString(params, "beginTime");
+    String endTime = getAsString(params, "endTime");
+    Integer page = getAsInteger(params, "page", 1);
+    Integer pageSize = getAsInteger(params, "pageSize", 50);
+	}
+	返回值：
+	{
+		success: true,
+		code: "",
+		msg: "",
+		data: {
+			totalCount,
+			totalPage
+			list:[
+				{
+					private Long userId;
+			    private String balanceIn;  金额 收
+			    private String  balanceOut;  金额 支
+			    private String companyName; 公司名称
+			    private String curDate; 日期
+			    private String remark; 备注
+			    private Integer type; 
+				}
+			]
+		}
+	}
+余额管理：
+	/dsp/finance/advert/fund/list?data={}
+	arg
+	{
+		String mail = getAsString(params, "mail");
+    String entName = getAsString(params, "companyName");
+    Long opUserId = getAsLong(params, "opUserId");
+    Integer page = getAsInteger(params, "page", 1);
+    Integer pageSize = getAsInteger(params, "pageSize", 50);
+	}
+	返回值：
+		private Long id;
+    private String companyName;
+
+    private String contactName; //姓名
+    private String contactMail; //邮箱
+    private String contactTel; //电话
+    private String contactQQ;  //QQ
+
+    private String fundSum; //账户余额
+    private String consumeTotal; // 当日消耗
+
+    private String opName;
+    private Long opUserId;
+  分配余额：
+  	点击分配余额： 可分配余额需要单独请求财务信息接口 /dsp/finance/self/get
+  	账号列表：/dsp/advertiser/getBaseList 
+  	切换账号：/dsp/advertiser/finance/info?data={id}
+  	返回值：
+  	 	private Long id;
+	    private Long userId;
+	    private String companyName;
+	    private String contactName; //姓名
+	    private String contactMail; //邮箱
+	    private String contactTel; //电话
+	    private String contactQQ;  //QQ
+
+	    private Long operatorUserId;
+	    private String operatorName;
+
+	    private String funSum; //余额
+
+	    private Integer status;
+	    private String statusText;
+
+	    //企业相关信息
+	    private String entName;
+	    private String entRegisterCode;
+	    private String entAddress;
+	    private String entLicenseUrl;//营业执照
+	    充值接口：/dsp/finance/advert/recharge?data={advertId,fundNum,password}
+创建广告：
+
+	http://localhost:8080/dsp/ad/plan/create?data={
+		name:"安卓推广-卫裤",
+		fee:40,
+		chargeType:1,
+		dayBudget:2000,
+		beginTime:"2017-03-28",
+		endTime:"2017-04-01",
+		platforms:[1,2],
+		industryIds:[1,2,3,4,5,6,7,8],
+		regionCodes:[1306,1309,1308,1304,1311,1310], x
+		couponTitle:"优惠券标题", x
+		couponRemark:"一句话",x
+		description:"描述",
+		thumbnailUrl:"werwerwer",
+		bannerUrl:"wwerwerwerwer",
+		type:1,
+		inventory:100000,
+		promoteUrl:"134234",
+		codeContent:"234234234",
+		codePassword:"234234234",
+		startValid:"2017-03-28",
+		endValid:"2017-04-01"
+	}
+
+	字段：
+		//广告主信息
+			// 第一步
+      String name = getAsString(params, "name");  广告计划名称		1
+      Integer chargeType = getAsInteger(params, "chargeType"); 计费方式		1
+      Long fee = getAsLong(params, "fee"); 广告出价	1
+      Long dayBudget = getAsLong(params, "dayBudget"); 日预算 	1
+      List<Integer> platforms = getAsList(params, "platforms", new TypeToken<List<Integer>>() { 投放平台 数组 3 ios 2 安卓		1
+      String beginTime = getAsString(params, "beginTime"); 投放日期		1
+      String endTime = getAsString(params, "endTime"); 投放日期			1
+      List<Integer> regionCodes = getAsList(params, "regionCodes", new TypeToken<List<Integer>> 地域 	1
+      // 第二步：
+      String promoteUrl = getAsString(params, "promoteUrl"); 推广链接		1
+      String couponTitle = getAsString(params, "couponTitle"); 商品名称		1
+      String description = getAsString(params, "description"); 详细描述		1
+      String couponRemark = getAsString(params, "couponRemark"); 一句话描述		1
+      List<Long> industryIds = getAsList(params, "industryIds", new TypeToken<List<Long>>行业 		1
+ 
+      
+      String thumbnailUrl = getAsString(params, "thumbnailUrl"); 缩略图  0
+      String bannerUrl = getAsString(params, "bannerUrl"); banner  0
+
+
+      // 第三步
+      String startValid = getAsString(params, "startValid"); 优惠码有效期 	1
+      String endValid = getAsString(params, "endValid"); 优惠码有效期			1
+      Integer type = getAsInteger(params, "type"); // (优惠码内容类型 val 1 2) 		1
+      Integer inventory = getAsInteger(params, "inventory"); // 优惠券数量				1
+      //优惠卷相关信息
+      Integer curInventory = getAsInteger(params, "curInventory");  // 当前库存
+     	private String codeContent = getAsString(params, "codeContent"); // 优惠码    1
+    	private String codePassword;  //优惠码密码			1
+
+
+
+
+	地域接口：/public/city/areas/get
+		private Integer code; //城市码
+    private String name; //名称
+    private Integer type; //类型：1.国家 2.地域 3.省 4.市
+    private Integer parentCode;
+    private List<CityAreaVO> children;
+
+  标签接口：/public/tag/industry/get
+  	private Integer code;
+    private String name;
+    private List<IndustryTagVO> children;
+  修改广告
+  	+ 广告id
+
+
+
+
+/user/mail/changePassword.action?data={mail,code,password}
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,32 @@
+@commonColor: #04B894;
+@bgColor: #FFF;
+@space: 15px;
+.manageAccount {
+	.search {
+		background-color: @bgColor;
+		padding: @space;
+		:global {
+			.ant-select-lg .ant-select-selection--single {
+				width: 142px !important;
+			}
+		}
+	}
+	.list {
+		background-color: @bgColor;
+		padding: @space;
+		margin-top: @space;
+		.head {
+			padding-bottom: @space;
+			.subTitle {
+				font-size: 14px;
+				color: @commonColor;
+			}
+			.add {
+				float: right;
+			}
+		}
+	}
+}
+.newAccount {
+	display: inline;			
+}

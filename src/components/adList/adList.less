@@ -1,0 +1,53 @@
+@space: 15px;
+@bgColor: #FFF;
+@commonColor: #04B894;
+
+.adList {
+	.search {
+		background-color: @bgColor;
+		padding: @space;
+		:global {
+			.ant-select-lg .ant-select-selection--single {
+				width: 142px !important;
+			}
+		}
+	}
+	.list {
+		background-color: @bgColor;
+		padding: @space;
+		margin-top: @space;
+		.head {
+			.subTitle {
+				font-size: 14px;
+				color: @commonColor;
+			}
+			.timeFilter {
+				float: right;
+				padding-bottom: @space;
+			}
+			.mr5 {
+				margin-right: 5px;
+			}
+		}
+		.pageList {
+			:global {
+				.ant-input {
+					width: 60px !important;
+				}
+			}
+		}
+	}
+	.newAccount {
+		padding: @space;
+		background-color: @bgColor;
+	}
+	.editAccount {
+		padding: @space;
+		background-color: @bgColor;
+		.title {
+			border-bottom: 1px dotted #04B894;
+			font-size: 14px;
+			padding: 10px 0;
+		}
+	}
+}
