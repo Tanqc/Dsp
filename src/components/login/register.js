@@ -198,7 +198,7 @@ class LoginIn extends Component {
               )}
             </FormItem>
             <FormItem>
-              <Checkbox checked={this.state.protocol} onChange={this.handleProtocol}>我已阅读并同意<Link to="/agreement" target="_blank">《平台服务使用协议》</Link></Checkbox>
+              <Checkbox checked={this.state.protocol} onChange={this.handleProtocol}>我已阅读并同意<Link to="/agreement">《平台服务使用协议》</Link></Checkbox>
             </FormItem>
             <FormItem {...tailFormItemLayout}>
               <Button

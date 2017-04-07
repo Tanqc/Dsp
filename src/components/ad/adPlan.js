@@ -11,6 +11,7 @@ import ReactQuill from '../plugin/react-quill';
 import RegionModal from './item/regionModal';
 import ImgUpload from '../plugin/imgUpload';
 import Industry from './item/industry';
+// import LzEditor from 'react-lz-editor'
 import moment from 'moment';
 
 const CheckboxGroup = Checkbox.Group;
